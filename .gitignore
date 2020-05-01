@@ -1,1 +1,6 @@
 demo/
+.idea/
+output/
+data/
+deep_sort/deep/checkpoint/
+detector/YOLOv3/weight/

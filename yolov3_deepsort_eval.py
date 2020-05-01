@@ -9,11 +9,14 @@ from yolov3_deepsort import VideoTracker
 from utils.parser import get_config
 
 import motmetrics as mm
+
 mm.lap.default_solver = 'lap'
 from utils.evaluation import Evaluator
 
+
 def mkdir_if_missing(dir):
     os.makedirs(dir, exist_ok=True)
+
 
 def main(data_root='', seqs=('',), args=""):
     logger = get_logger()
@@ -31,7 +34,7 @@ def main(data_root='', seqs=('',), args=""):
     for seq in seqs:
         logger.info('start seq: {}'.format(seq))
         result_filename = os.path.join(result_root, '{}.txt'.format(seq))
-        video_path = data_root+"/"+seq+"/video/video.mp4"
+        video_path = data_root + "/" + seq + "/video/video.mp4"
 
         with VideoTracker(cfg, args, video_path, result_filename) as vdo_trk:
             vdo_trk.run()
@@ -67,6 +70,7 @@ def parse_args():
     parser.add_argument("--camera", action="store", dest="cam", type=int, default="-1")
     return parser.parse_args()
 
+
 if __name__ == '__main__':
     args = parse_args()
 
@@ -77,7 +81,7 @@ if __name__ == '__main__':
                   MOT16-10
                   MOT16-11
                   MOT16-13
-                  '''        
+                  '''
     data_root = 'data/dataset/MOT16/train/'
 
     seqs = [seq.strip() for seq in seqs_str.split()]
